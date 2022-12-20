@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SalesWeb.Models;
 using SalesWeb.Services;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,20 @@ namespace SalesWeb.Controllers
         {
             var sellers = _sellerService.FindAll();
             return View(sellers);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Seller seller)
+        {
+            _sellerService.Insert(seller);
+            //nameof deixa fixo o nome, mesmo que altere o nome da action Index
+            return RedirectToAction(nameof(Index));
         }
     }
 }
