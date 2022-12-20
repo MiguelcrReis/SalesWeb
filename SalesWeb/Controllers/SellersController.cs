@@ -39,6 +39,13 @@ namespace SalesWeb.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Seller seller)
         {
+            if (!ModelState.IsValid)
+            {
+                var departments = _departmentService.FindAll();
+                var viewModels = new SellerFormViewModel { Seller = seller, Departments = departments };
+                return View(viewModels);
+            }
+
             _sellerService.Insert(seller);
             //nameof deixa fixo o nome, mesmo que altere o nome da action Index
             return RedirectToAction(nameof(Index));
@@ -109,6 +116,13 @@ namespace SalesWeb.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Seller seller)
         {
+            if (!ModelState.IsValid)
+            {
+                var departments = _departmentService.FindAll();
+                var viewModels = new SellerFormViewModel { Seller = seller, Departments = departments };
+                return View(viewModels);
+            }
+
             if (id != seller.Id)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id mismatch" });
