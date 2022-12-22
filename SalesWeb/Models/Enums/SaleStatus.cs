@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace SalesWeb.Models.Enums
+﻿namespace SalesWeb.Models.Enums
 {
     public enum SaleStatus : int
     {
