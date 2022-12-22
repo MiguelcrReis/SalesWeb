@@ -35,10 +35,32 @@ com Entity Framework (versão 2.1.1), utilizando a IDE Visual Studio 2019 (vers�
 
 </p>
 
-![Exemple SalesWeb - Google Chrome 2022-12-22 10-27-44](https://user-images.githubusercontent.com/69518446/209144963-beb53b9d-164d-4c84-a24f-df8e51da1ad6.gif)
+![Example SalesWeb - Google Chrome 2022-12-22 10-27-44](https://user-images.githubusercontent.com/69518446/209144963-beb53b9d-164d-4c84-a24f-df8e51da1ad6.gif)
 
-# 📁 Acesso ao projeto
+## 📁 Project access
+[Source code](https://github.com/MiguelcrReis/SalesWeb)
+[Download ZIP](https://github.com/MiguelcrReis/SalesWeb/archive/refs/heads/master.zip)
+## 🛠️ Open and run the project
 
+Must have installed [ .NET Core 2.1 SDK ](https://dotnet.microsoft.com/en-us/download/dotnet/2.1)
 
-# 🛠️ Abrir e rodar o projeto
+Must have installed [ Servidor MySQL 8.0 ](https://dev.mysql.com/downloads/windows/installer/8.0.html)
 
+Configure connection string in project's appsettings.json, replacing the `username`, `password`, and `database` appropriately:
+
+```cs
+"ConnectionStrings": {
+  "DefaultConnection":"server=localhost;userid=myusername;password=mypassword;database=mydatabase;"
+},
+```
+
+Execute the installation and Execute the migration of the Mysql provider using either Visual Studio Package Manager Console (from menu: Tools -> NuGet Package Manager -> Package Manager Console):
+
+```
+Install-Package Pomelo.EntityFrameworkCore.MySql -Version 2.1.1
+```
+```
+Update-Database
+```
+
+Run the solution.
